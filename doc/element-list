@@ -1,0 +1,11 @@
+com.xceptance.testbddy.api
+com.xceptance.testbddy.core.bdd
+com.xceptance.testbddy.core.bdd.scenario
+com.xceptance.testbddy.core.bdd.status
+com.xceptance.testbddy.core.bdd.steps
+com.xceptance.testbddy.core.reporting
+com.xceptance.testbddy.core.reporting.extentreports
+com.xceptance.testbddy.core.throwables
+com.xceptance.testbddy.core.throwables.errors
+com.xceptance.testbddy.core.throwables.exceptions
+com.xceptance.testbddy.core.util
