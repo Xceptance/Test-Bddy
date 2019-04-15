@@ -5,7 +5,7 @@
 
     <groupId>com.xceptance</groupId>
     <artifactId>test-bddy</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     
     <name>Test-Bddy</name>
     <description>A framework for writing BDD-style acceptance tests within code.</description>

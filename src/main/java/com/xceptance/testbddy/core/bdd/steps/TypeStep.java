@@ -97,8 +97,8 @@ public class TypeStep<T> extends AbstractStep<Consumer<T>>
     protected ReportElement setUpReporter()
     {
         PlaceholderResolver<T> resolver = new PlaceholderResolver<>();
-        setDescription(resolver.resolvePlaceholders(getDescription(), testdata));
-        return super.setUpReporter(true, getDescription());
+        String resolvedDescription = resolver.resolvePlaceholders(getDescription(), testdata);
+        return super.setUpReporter(true, resolvedDescription);
     }
 
     /**
