@@ -18,10 +18,8 @@ import com.xceptance.testbddy.core.throwables.exceptions.StepException;
  * Hence, it contains the actual behavior.
  * 
  * @author ckeiner
- *
  * @param <T>
- *            The type of the behavior. This is typically a functional interface
- *            like {@link Runnable}.
+ *            The type of the behavior. This is typically a functional interface like {@link Runnable}.
  */
 public abstract class AbstractStep<T> implements Statusable
 {
@@ -54,8 +52,7 @@ public abstract class AbstractStep<T> implements Statusable
      * Creates an AbstractStep with the specified keyword, description and behavior.
      * 
      * @param keyword
-     *            The {@link GherkinKeyword} describing whether its a given, when,
-     *            then or and step.
+     *            The {@link GherkinKeyword} describing whether its a given, when, then or and step.
      * @param description
      *            A String describing what this step does.
      * @param behavior
@@ -71,12 +68,10 @@ public abstract class AbstractStep<T> implements Statusable
 
     /**
      * Executes the step.<br>
-     * It first verifies if the step can and should be run. Then sets up the
-     * reporter If {@link #reporter} was specified, it first prepares the report. If
-     * {@link #skip} is set, the {@link #skipStep()} method is called, otherwise
-     * {@link #executeStep()} is called. <br>
-     * If an Exception or Error occurs, it is re-thrown as {@link StepException} and
-     * {@link StepError} respectively.
+     * It first verifies if the step can and should be run. Then sets up the reporter If {@link #reporter} was
+     * specified, it first prepares the report. If {@link #skip} is set, the {@link #skipStep()} method is called,
+     * otherwise {@link #executeStep()} is called. <br>
+     * If an Exception or Error occurs, it is re-thrown as {@link StepException} and {@link StepError} respectively.
      * 
      * @throws StepException
      *             If an Exception occurs. The report shows the step as fatal.
@@ -101,7 +96,7 @@ public abstract class AbstractStep<T> implements Statusable
                     // Mark the node as passed if it exists
                     if (stepReporter != null)
                     {
-                        stepReporter.pass(getDescription());
+                        stepReporter.pass("");
                     }
                 }
                 // If the step should be skipped
@@ -110,10 +105,11 @@ public abstract class AbstractStep<T> implements Statusable
                     // Mark the node as skipped
                     if (stepReporter != null)
                     {
-                        stepReporter.skip(getDescription());
+                        stepReporter.skip("");
                     }
                 }
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 // Mark the node as fatal
                 if (stepReporter != null)
@@ -122,7 +118,8 @@ public abstract class AbstractStep<T> implements Statusable
                 }
                 // Throw an Exception
                 throw new StepException("Step " + getDescription() + " failed.", e);
-            } catch (Error e)
+            }
+            catch (Error e)
             {
                 // Mark the node as failed
                 if (stepReporter != null)
@@ -136,9 +133,8 @@ public abstract class AbstractStep<T> implements Statusable
     }
 
     /**
-     * Verifies if the step can and should be executed. If a step is ignores, has a
-     * null behavior or the behavior is either {@link PendingRunnable} or
-     * {@link PendingConsumer}, it is not executed.
+     * Verifies if the step can and should be executed. If a step is ignores, has a null behavior or the behavior is
+     * either {@link PendingRunnable} or {@link PendingConsumer}, it is not executed.
      * 
      * @return True if it should be executed. Otherwise false.
      */
@@ -153,8 +149,7 @@ public abstract class AbstractStep<T> implements Statusable
 
         if (behavior == null)
         {
-            throw new StepException("Step " + getDescription() + " failed.",
-                    new IllegalStateException("Null behavior found"));
+            throw new StepException("Step " + getDescription() + " failed.", new IllegalStateException("Null behavior found"));
         }
 
         // If the behavior is either a pending runnable or pending consumer
@@ -207,13 +202,11 @@ public abstract class AbstractStep<T> implements Statusable
 
     /**
      * Creates a {@link ReportElement} for the step if a reporter is set.<br>
-     * Also assigns the step's status as the report element's category if
-     * reportStatus is true.
+     * Also assigns the step's status as the report element's category if reportStatus is true.
      * 
      * @param reportStatus
      *            Whether the status should be shown in the report.
-     * @return The ReportElement for a Step. <code>null</code> if
-     *         {@link #getReporter()} returns <code>null</code>.
+     * @return The ReportElement for a Step. <code>null</code> if {@link #getReporter()} returns <code>null</code>.
      */
     protected ReportElement setUpReporter(boolean reportStatus)
     {
@@ -221,17 +214,14 @@ public abstract class AbstractStep<T> implements Statusable
     }
 
     /**
-     * Creates a {@link ReportElement} with a custom description for the step if a
-     * reporter is set.<br>
-     * Also assigns the step's status as the report element's category if
-     * reportStatus is true.
+     * Creates a {@link ReportElement} with a custom description for the step if a reporter is set.<br>
+     * Also assigns the step's status as the report element's category if reportStatus is true.
      * 
      * @param reportStatus
      *            Whether the status should be shown in the report.
      * @param description
      *            The description of the {@link ReportElement}.
-     * @return The ReportElement for a Step. <code>null</code> if
-     *         {@link #getReporter()} returns <code>null</code>.
+     * @return The ReportElement for a Step. <code>null</code> if {@link #getReporter()} returns <code>null</code>.
      */
     protected ReportElement setUpReporter(boolean reportStatus, String description)
     {
@@ -299,8 +289,7 @@ public abstract class AbstractStep<T> implements Statusable
 
     /**
      * Skip the step.<br>
-     * This means, it appears in the report, but is not executed. The following
-     * steps are executed regardless.
+     * This means, it appears in the report, but is not executed. The following steps are executed regardless.
      */
     @Override
     public AbstractStep<T> skip()
